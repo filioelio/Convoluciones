@@ -89,6 +89,4 @@ function convolucionar(canvas,  result){
         }
     }
     ctxResult.putImageData(imageResult, 0, 0)
-
-
 }
