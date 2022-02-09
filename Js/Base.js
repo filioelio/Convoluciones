@@ -60,7 +60,7 @@ function convolucionar(canvas,  result){
     var sobelHorizontal = [
         [-1,-2,-1],
         [0,0,0],
-        [-1,2,1],
+        [1,2,1],
     ];
 
     for(var y = 1 ; y < canvas.height-1; y++) {
