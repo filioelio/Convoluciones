@@ -1,6 +1,6 @@
 var image = new Image();
 image.onload = imageLoaded;
-image.src = "./Img/IMG_0355.jpg"
+image.src = "./Img/IMG_E0288.jpg"
 
 function imageLoaded(){
     var canvas = document.getElementById("canvas");
