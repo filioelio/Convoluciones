@@ -98,9 +98,15 @@ function convolucionar(canvas,  result){
 
             var resultEndX = casillaX1 + casillaX2 + casillaX3 + casillaX4 + casillaX5+casillaX6 + casillaX7 + casillaX8 + casillaX9;
 
-            pixelesResult[idx] = resultEndX ; // red
-            pixelesResult[idx+1] = resultEndX; // green  
-            pixelesResult[idx+2] = resultEndX;// blue
+            var mag = Math.sqrt((resultEndX * resultEndX ) + (resultEndY * resultEndY))
+
+            //quita lo de atras de la foto
+            mag = (mag < 40) ? 0 : mag ;
+
+
+            pixelesResult[idx] = mag ; // red
+            pixelesResult[idx+1] = mag; // green  
+            pixelesResult[idx+2] = mag;// blue
             pixelesResult[idx+3] = 255;// alpha
 
             //casilla
