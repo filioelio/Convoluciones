@@ -50,7 +50,7 @@ function convolucionar(canvas,  result){
     var imageResult = ctxResult.getImageData(0,0, result.width, result.height);
     var pixelesResult = imageResult.data;
 
-    //nucleo, kernel => soel
+    //nucleo, kernel => sobel
     var kernel = [
         [-1,-1,-1],
         [-1,8,-1],
