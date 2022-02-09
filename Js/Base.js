@@ -68,21 +68,39 @@ function convolucionar(canvas,  result){
             //posición en el arreglo js
             var idx =((y*canvas.width) + x) *4
 
-            var casillaY1 = sobelVertical[0][0]  * pixelesCanvas[((((y-1)*canvas.width) + (x-1)) *4)]
-            var casillaY2 = sobelVertical[0][1]  * pixelesCanvas[((((y-1)*canvas.width) + (x)) *4)]
-            var casillaY3 = sobelVertical[0][2]  * pixelesCanvas[((((y-1)*canvas.width) + (x+1)) *4)]
-            var casillaY4 = sobelVertical[1][0]  * pixelesCanvas[((((y)*canvas.width) + (x-1)) *4)]
-            var casillaY5 = sobelVertical[1][1]  * pixelesCanvas[((((y)*canvas.width) + (x)) *4)]
-            var casillaY6 = sobelVertical[1][2]  * pixelesCanvas[((((y)*canvas.width) + (x+1)) *4)]
-            var casillaY7 = sobelVertical[2][0]  * pixelesCanvas[((((y+1)*canvas.width) + (x-1)) *4)]
-            var casillaY8 = sobelVertical[2][1]  * pixelesCanvas[((((y+1)*canvas.width) + (x)) *4)]
-            var casillaY9 = sobelVertical[2][2]  * pixelesCanvas[((((y+1)*canvas.width) + (x+1)) *4)]
+            // var casillaY1 = sobelVertical[0][0]  * pixelesCanvas[((((y-1)*canvas.width) + (x-1)) *4)]
+            // var casillaY2 = sobelVertical[0][1]  * pixelesCanvas[((((y-1)*canvas.width) + (x)) *4)]
+            // var casillaY3 = sobelVertical[0][2]  * pixelesCanvas[((((y-1)*canvas.width) + (x+1)) *4)]
+            // var casillaY4 = sobelVertical[1][0]  * pixelesCanvas[((((y)*canvas.width) + (x-1)) *4)]
+            // var casillaY5 = sobelVertical[1][1]  * pixelesCanvas[((((y)*canvas.width) + (x)) *4)]
+            // var casillaY6 = sobelVertical[1][2]  * pixelesCanvas[((((y)*canvas.width) + (x+1)) *4)]
+            // var casillaY7 = sobelVertical[2][0]  * pixelesCanvas[((((y+1)*canvas.width) + (x-1)) *4)]
+            // var casillaY8 = sobelVertical[2][1]  * pixelesCanvas[((((y+1)*canvas.width) + (x)) *4)]
+            // var casillaY9 = sobelVertical[2][2]  * pixelesCanvas[((((y+1)*canvas.width) + (x+1)) *4)]
 
-            var resultEndY = casillaY1 + casillaY2 + casillaY3 + casillaY4 + casillaY5+casillaY6 + casillaY7 + casillaY8 + casillaY9;
+            // var resultEndY = casillaY1 + casillaY2 + casillaY3 + casillaY4 + casillaY5+casillaY6 + casillaY7 + casillaY8 + casillaY9;
 
-            pixelesResult[idx] = resultEndY ; // red
-            pixelesResult[idx+1] = resultEndY; // green  
-            pixelesResult[idx+2] = resultEndY;// blue
+            // pixelesResult[idx] = resultEndY ; // red
+            // pixelesResult[idx+1] = resultEndY; // green  
+            // pixelesResult[idx+2] = resultEndY;// blue
+            // pixelesResult[idx+3] = 255;// alpha
+
+
+            var casillaX1 = sobelHorizontal[0][0]  * pixelesCanvas[((((y-1)*canvas.width) + (x-1)) *4)]
+            var casillaX2 = sobelHorizontal[0][1]  * pixelesCanvas[((((y-1)*canvas.width) + (x)) *4)]
+            var casillaX3 = sobelHorizontal[0][2]  * pixelesCanvas[((((y-1)*canvas.width) + (x+1)) *4)]
+            var casillaX4 = sobelHorizontal[1][0]  * pixelesCanvas[((((y)*canvas.width) + (x-1)) *4)]
+            var casillaX5 = sobelHorizontal[1][1]  * pixelesCanvas[((((y)*canvas.width) + (x)) *4)]
+            var casillaX6 = sobelHorizontal[1][2]  * pixelesCanvas[((((y)*canvas.width) + (x+1)) *4)]
+            var casillaX7 = sobelHorizontal[2][0]  * pixelesCanvas[((((y+1)*canvas.width) + (x-1)) *4)]
+            var casillaX8 = sobelHorizontal[2][1]  * pixelesCanvas[((((y+1)*canvas.width) + (x)) *4)]
+            var casillaX9 = sobelHorizontal[2][2]  * pixelesCanvas[((((y+1)*canvas.width) + (x+1)) *4)]
+
+            var resultEndX = casillaX1 + casillaX2 + casillaX3 + casillaX4 + casillaX5+casillaX6 + casillaX7 + casillaX8 + casillaX9;
+
+            pixelesResult[idx] = resultEndX ; // red
+            pixelesResult[idx+1] = resultEndX; // green  
+            pixelesResult[idx+2] = resultEndX;// blue
             pixelesResult[idx+3] = 255;// alpha
 
             //casilla
