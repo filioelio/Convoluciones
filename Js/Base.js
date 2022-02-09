@@ -51,33 +51,57 @@ function convolucionar(canvas,  result){
     var pixelesResult = imageResult.data;
 
     //nucleo, kernel => sobel
-    var kernel = [
-        [-1,-1,-1],
-        [-1,8,-1],
-        [-1,-1,-1],
+    var sobelVertical = [
+        [-1,0,1],
+        [-2,0,2],
+        [-1,0,1],
+    ];
+
+    var sobelHorizontal = [
+        [-1,-2,-1],
+        [0,0,0],
+        [-1,2,1],
     ];
 
     for(var y = 1 ; y < canvas.height-1; y++) {
         for(var x = 1 ; x < canvas.width-1; x++) {
             //posición en el arreglo js
             var idx =((y*canvas.width) + x) *4
-            //casilla
-            var casilla1 = kernel[0][0]  * pixelesCanvas[((((y-1)*canvas.width) + (x-1)) *4)]
-            var casilla2 = kernel[0][1]  * pixelesCanvas[((((y-1)*canvas.width) + (x)) *4)]
-            var casilla3 = kernel[0][2]  * pixelesCanvas[((((y-1)*canvas.width) + (x+1)) *4)]
-            var casilla4 = kernel[1][0]  * pixelesCanvas[((((y)*canvas.width) + (x-1)) *4)]
-            var casilla5 = kernel[1][1]  * pixelesCanvas[((((y)*canvas.width) + (x)) *4)]
-            var casilla6 = kernel[1][2]  * pixelesCanvas[((((y)*canvas.width) + (x+1)) *4)]
-            var casilla7 = kernel[2][0]  * pixelesCanvas[((((y+1)*canvas.width) + (x-1)) *4)]
-            var casilla8 = kernel[2][1]  * pixelesCanvas[((((y+1)*canvas.width) + (x)) *4)]
-            var casilla9 = kernel[2][2]  * pixelesCanvas[((((y+1)*canvas.width) + (x+1)) *4)]
 
-            var resultEnd = casilla1 + casilla2 + casilla3 + casilla4 + casilla5+casilla6 + casilla7 + casilla8 + casilla9;
+            var casillaY1 = sobelVertical[0][0]  * pixelesCanvas[((((y-1)*canvas.width) + (x-1)) *4)]
+            var casillaY2 = sobelVertical[0][1]  * pixelesCanvas[((((y-1)*canvas.width) + (x)) *4)]
+            var casillaY3 = sobelVertical[0][2]  * pixelesCanvas[((((y-1)*canvas.width) + (x+1)) *4)]
+            var casillaY4 = sobelVertical[1][0]  * pixelesCanvas[((((y)*canvas.width) + (x-1)) *4)]
+            var casillaY5 = sobelVertical[1][1]  * pixelesCanvas[((((y)*canvas.width) + (x)) *4)]
+            var casillaY6 = sobelVertical[1][2]  * pixelesCanvas[((((y)*canvas.width) + (x+1)) *4)]
+            var casillaY7 = sobelVertical[2][0]  * pixelesCanvas[((((y+1)*canvas.width) + (x-1)) *4)]
+            var casillaY8 = sobelVertical[2][1]  * pixelesCanvas[((((y+1)*canvas.width) + (x)) *4)]
+            var casillaY9 = sobelVertical[2][2]  * pixelesCanvas[((((y+1)*canvas.width) + (x+1)) *4)]
 
-            pixelesResult[idx] = resultEnd ; // red
-            pixelesResult[idx+1] = resultEnd; // green  
-            pixelesResult[idx+2] = resultEnd;// blue
+            var resultEndY = casillaY1 + casillaY2 + casillaY3 + casillaY4 + casillaY5+casillaY6 + casillaY7 + casillaY8 + casillaY9;
+
+            pixelesResult[idx] = resultEndY ; // red
+            pixelesResult[idx+1] = resultEndY; // green  
+            pixelesResult[idx+2] = resultEndY;// blue
             pixelesResult[idx+3] = 255;// alpha
+
+            //casilla
+            // var casilla1 = kernel[0][0]  * pixelesCanvas[((((y-1)*canvas.width) + (x-1)) *4)]
+            // var casilla2 = kernel[0][1]  * pixelesCanvas[((((y-1)*canvas.width) + (x)) *4)]
+            // var casilla3 = kernel[0][2]  * pixelesCanvas[((((y-1)*canvas.width) + (x+1)) *4)]
+            // var casilla4 = kernel[1][0]  * pixelesCanvas[((((y)*canvas.width) + (x-1)) *4)]
+            // var casilla5 = kernel[1][1]  * pixelesCanvas[((((y)*canvas.width) + (x)) *4)]
+            // var casilla6 = kernel[1][2]  * pixelesCanvas[((((y)*canvas.width) + (x+1)) *4)]
+            // var casilla7 = kernel[2][0]  * pixelesCanvas[((((y+1)*canvas.width) + (x-1)) *4)]
+            // var casilla8 = kernel[2][1]  * pixelesCanvas[((((y+1)*canvas.width) + (x)) *4)]
+            // var casilla9 = kernel[2][2]  * pixelesCanvas[((((y+1)*canvas.width) + (x+1)) *4)]
+
+            // var resultEnd = casilla1 + casilla2 + casilla3 + casilla4 + casilla5+casilla6 + casilla7 + casilla8 + casilla9;
+
+            // pixelesResult[idx] = resultEnd ; // red
+            // pixelesResult[idx+1] = resultEnd; // green  
+            // pixelesResult[idx+2] = resultEnd;// blue
+            // pixelesResult[idx+3] = 255;// alpha
 
             //convierte todo la imagen en gris
             // pixelesResult[idx] = pixelesCanvas[idx] ; // red
